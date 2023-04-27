@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <Button
+            android:id="@+id/btnSimpleCoroutine"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Simple Coroutine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnSimpleCoroutineScope"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Simple Coroutine Scope"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSimpleCoroutine" />
+
+        <Button
+            android:id="@+id/btnRunBlocking"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Run Blocking"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSimpleCoroutineScope" />
+
+        <Button
+            android:id="@+id/btnWithoutJoin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Without Join"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRunBlocking" />
+
+        <Button
+            android:id="@+id/btnWithJoin"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="With Join"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWithoutJoin" />
+
+        <Button
+            android:id="@+id/btnWithoutStart"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Without Start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWithJoin" />
+
+
+        <Button
+            android:id="@+id/btnWithStart"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="With Start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWithoutStart" />
+
+        <Button
+            android:id="@+id/btnAsync"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="With Async"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWithStart" />
+
+        <Button
+            android:id="@+id/btnWithAwait"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="With Await"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAsync" />
+
+        <Button
+            android:id="@+id/btnParallelLaunch"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Parallel Launch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWithAwait" />
+
+        <Button
+            android:id="@+id/btnDelayedStartWithAwait"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Delayed Start With Await"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnParallelLaunch" />
+
+        <Button
+            android:id="@+id/btnWithCancel"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="With Cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDelayedStartWithAwait" />
+
+        <Button
+            android:id="@+id/btnCancellationException"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Cancellation Exception"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWithCancel" />
+
+        <Button
+            android:id="@+id/btnCancellationExceptionAsync"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Cancellation Exception Async"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnWithCancel" />
+
+        <Button
+            android:id="@+id/btnCoroutineExceptionHandler"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Coroutine Exception Handler"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCancellationExceptionAsync" />
+
+        <Button
+            android:id="@+id/btnWithTimeOut"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:text="WithTimeOut"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCoroutineExceptionHandler" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
