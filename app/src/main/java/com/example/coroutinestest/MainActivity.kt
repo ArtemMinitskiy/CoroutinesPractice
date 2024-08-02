@@ -138,8 +138,66 @@ class MainActivity : AppCompatActivity() {
                     println("Ending the long calculation...")
                 }
             }
+
+            btnYield.setOnClickListener {
+                scope.launch(Dispatchers.Default) {
+                    yieldFun()
+                }
+            }
+
+            btnSupervisorJob.setOnClickListener {
+                scope.launch(Dispatchers.Default) {
+                    supervisorJob()
+                }
+            }
+        }
+    }
+
+    //SupervisorJob — это специальный тип работы (Job) в Kotlin Coroutines, который предоставляет механизм для изоляции ошибок в дочерних корутинах от родительской корутины.
+    //Он был создан для обеспечения независимости выполнения корутин, чтобы ошибка в одной дочерней корутине не приводила к автоматической отмене других корутин.
+    //В этом примере мы добавляем SupervisorJob в CoroutineScope. Теперь каждая дочерняя корутина, запущенная в этом скоупе, будет иметь независимость в отношении отмены.
+    //В случае возникновения ошибки в дочерней корутине остальные корутины будут продолжать выполнение.
+    private fun supervisorJob() {
+        val exceptionHandler= CoroutineExceptionHandler { _, throwable ->
+            println("Handle exception: ${throwable.message}")
+        }
+        val supervisorJob = SupervisorJob()
+        val scope = CoroutineScope(Dispatchers.IO + supervisorJob + exceptionHandler)
+
+        scope.launch {
+            launch {
+                delay(3_000)
+                throw (IllegalStateException("Child coroutine failed"))
+            }
+            while (true) {
+                delay(1_000)
+                println("tick 1")
+            }
         }
 
+        scope.launch {
+            while (true) {
+                delay(1_000)
+                println("tick 2")
+            }
+        }
+    }
+
+    //yield — это функция приостановки, которая сигнализирует планировщику корутины о готовности корутины приостановить свое выполнение, тем самым позволяя другим корутинам использовать поток.
+    //Это особенно полезно в сценариях, где корутина участвует в длительной операции, вызов yield гарантирует, что поток не будет монополизирован, что позволяет более справедливо выполнять параллельные задачи.
+    //yield в первой корутине приводит к тому, что первая корутина фактически уступает место второй.
+    private fun yieldFun() = runBlocking {
+        launch {
+            for (i in 1..5) {
+                println("Computation $i in Coroutine 1")
+                yield()
+            }
+        }
+        launch {
+            for (i in 1..5) {
+                println("Task $i in Coroutine 2")
+            }
+        }
     }
 
     private fun fib(n: Int): Long {
